@@ -1,9 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>W3 Cloud Studio | AWS Cloud Courses</title>
+  <style>
+    :root {
+      --bg: #071024;
+      --bg-soft: #0f1b34;
+      --card: #132447;
+      --text: #eaf2ff;
+      --muted: #b3c2e0;
+      --accent: #59b6ff;
+      --accent-2: #6ef3cd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #123169 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      background: rgba(7, 16, 36, 0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .brand span {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 58ch;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #00122a;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 20px rgba(75, 167, 255, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(110, 243, 205, 0.17), rgba(89, 182, 255, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .hero-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--accent-2);
+    }
+
+    .hero-card ul {
+      list-style-position: inside;
+      color: var(--muted);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      max-width: 68ch;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .course-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+
+    .course-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pill {
+      display: inline-block;
+      background: rgba(89, 182, 255, 0.2);
+      color: var(--accent);
+      border: 1px solid rgba(89, 182, 255, 0.35);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .why {
+      background: var(--bg-soft);
+      border-block: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
 <body>
+  <header>
+    <nav class="container">
+      <div class="brand">W3 <span>Cloud Studio</span></div>
+      <ul class="nav-links">
+        <li>Courses</li>
+        <li>Mentorship</li>
+        <li>Enterprise Training</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  </header>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Master AWS Skills That Get You Hired Faster</h1>
+        <p>
+          W3 Cloud Studio helps students and professionals become confident in real-world AWS cloud engineering.
+          Learn step by step with hands-on labs, interview prep sessions, and guided capstone projects.
+        </p>
+        <div class="cta-group">
+          <a href="#courses" class="btn btn-primary">Explore Courses</a>
+          <a href="#why-w3" class="btn btn-secondary">Why W3 Cloud Studio</a>
+        </div>
+      </div>
 
+      <aside class="hero-card">
+        <h3>What you'll get</h3>
+        <ul>
+          <li>Weekly live AWS training classes</li>
+          <li>Practice projects using EC2, S3, VPC, IAM, and Lambda</li>
+          <li>AWS certification exam strategy and mock tests</li>
+          <li>Career support for cloud roles and freelance gigs</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="courses">
+      <h2 class="section-title">Popular AWS Courses</h2>
+      <p class="section-copy">
+        Pick the learning path that matches your current level. Each course includes guided labs,
+        downloadable notes, and practical exercises designed around industry use-cases.
+      </p>
+      <div class="course-grid">
+        <article class="course-card">
+          <span class="pill">Beginner</span>
+          <h3>AWS Cloud Foundations Bootcamp</h3>
+          <p>Learn the core AWS services and build your first cloud environment from scratch.</p>
+          <strong>Duration: 6 Weeks</strong>
+        </article>
+        <article class="course-card">
+          <span class="pill">Intermediate</span>
+          <h3>AWS Solutions Architect Associate Prep</h3>
+          <p>Deep dive into architecture best practices with exam-focused scenarios and labs.</p>
+          <strong>Duration: 8 Weeks</strong>
+        </article>
+        <article class="course-card">
+          <span class="pill">Advanced</span>
+          <h3>DevOps on AWS Professional Track</h3>
+          <p>Deploy CI/CD pipelines, containerized apps, and monitoring stacks on AWS.</p>
+          <strong>Duration: 10 Weeks</strong>
+        </article>
+        <article class="course-card">
+          <span class="pill">Career Path</span>
+          <h3>Cloud Job Accelerator Program</h3>
+          <p>Portfolio projects, resume refinement, and interview practice for cloud jobs.</p>
+          <strong>Duration: 12 Weeks</strong>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <section id="why-w3" class="why">
+    <div class="container">
+      <h2 class="section-title">Why Choose W3 Cloud Studio?</h2>
+      <p class="section-copy">
+        We blend theory with practical delivery. Our focus is helping you build confidence through real AWS
+        workflows so you can transition into cloud roles with confidence.
+      </p>
+      <div class="features">
+        <div class="feature"><strong>Hands-On Labs</strong><br>Build and troubleshoot on AWS in every module.</div>
+        <div class="feature"><strong>Expert Mentors</strong><br>Get guidance from professionals with cloud deployment experience.</div>
+        <div class="feature"><strong>Certification Support</strong><br>Study plans and mock tests for AWS certification readiness.</div>
+        <div class="feature"><strong>Community Access</strong><br>Join a network of learners and cloud professionals.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 W3 Cloud Studio · Empowering cloud careers with AWS-focused training.
+  </footer>
 </body>
 </html>
